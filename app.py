@@ -1,11 +1,8 @@
-def add(a, b):
-    return a + b
-
-
-def multiply(a, b):
-    return a * b
+def calculate(expression):
+    return eval(expression)
 
 
 if __name__ == "__main__":
-    print("Application is running")
-    print("2 + 3 =", add(2, 3))
+    user_input = input("Enter expression: ")
+    result = calculate(user_input)
+    print("Result:", result)
