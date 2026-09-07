@@ -1,0 +1,32 @@
+name: CI Build Test and SAST
+
+on:
+  push:
+    branches:
+      - main
+      - feature
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-test-security:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: python -m pip install pytest bandit
+
+      - name: Run tests
+        run: python -m pytest
+
+      - name: Run Bandit SAST
+        run: python -m bandit -r . -ll
