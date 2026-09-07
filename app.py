@@ -1,3 +1,7 @@
+def calculate(expression):
+    return eval(expression)
+
+
 def add(a, b):
     return a + b
 
